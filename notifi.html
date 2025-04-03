@@ -11,7 +11,7 @@
     .content { padding: 10px 10px; }
     .card-container { display: grid; grid-template-columns: 1fr; gap: 10px; }
     @media (min-width: 768px) { .card-container { grid-template-columns: 1fr 1fr; } }
-    .card { display: flex; background-color: #3A4256; padding: 10px; opacity: 0; border-radius: 8px; box-sizing: border-box; position: relative; transform: translateY(-10px); transition: all 1s ease-out; }
+    .card { display: flex; background-color: #3A4256; padding: 10px; opacity: 0; border-radius: 8px; box-sizing: border-box; position: relative; transform: translateY(-10px); transition: all 0.5s ease-out; }
     .card-content { flex: 1; }
     .card-title { font-size: 16px; font-weight: bold; text-overflow: ellipsis; color: #FFFFFF; }
     .card-description { font-size: 15px; color: #CED4DA; margin-bottom: 10px; }
@@ -48,7 +48,7 @@
         document.querySelectorAll(".card, .card-content, .footer").forEach((e, i) => {
             setTimeout(() => {
                 e.classList.add("show");
-            }, 150 * i);
+            }, 100 * i);
         });
     });
 </script>
