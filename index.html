@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #2A3245;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      user-select: none;
+    }
+    main {
+      flex-grow: 1;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .bottom-navbar {
+      display: flex;
+      justify-content: space-around;
+      background-color: #1C2333;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80px;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .nav-item i {
+      font-size: 20px;
+      padding: 10px;
+      color: #fff;
+      transition: all 0.3s;
+    }
+    .nav-item span {
+      font-size: 10px;
+      color: #bbb;
+      transition: all 0.3s ease-in-out;
+    }
+    .nav-item.active i,
+    .nav-item.active span {
+      color: #FFD700;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <iframe id="content-frame" src="home.html"></iframe>
+  </main>
+  <footer>
+    <div class="bottom-navbar">
+      <div class="nav-item" data-page="home.html">
+        <i class="fas fa-home"></i>
+        <span>Beranda</span>
+      </div>
+      <div class="nav-item" data-page="explore.html">
+        <i class="fas fa-compass"></i>
+        <span>Jelajahi</span>
+      </div>
+      <div class="nav-item" data-page="notifi.html">
+        <i class="fas fa-bell"></i>
+        <span>Notifikasi</span>
+      </div>
+    </div>
+  </footer>
+ <script>document.addEventListener("DOMContentLoaded",function(){const e=document.querySelectorAll(".nav-item"),t=document.getElementById("content-frame");function n(n){e.forEach(e=>e.classList.remove("active"));const a=[...e].find(e=>e.getAttribute("data-page")===n);a&&a.classList.add("active")}e.forEach(e=>{e.addEventListener("click",function(){const e=this.getAttribute("data-page");t.src=e,n(e),history.pushState({page:e},"",`#${e}`)})}),window.addEventListener("popstate",e=>{e.state&&e.state.page?(t.src=e.state.page,n(e.state.page)):(t.src="home.html",n("home.html"))});const a=location.hash.replace("#","")||"home.html";t.src=a,n(a)});</script>
+</body>
+</html>
