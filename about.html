@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+    html { scroll-behavior: smooth; }
+    a{color:#FFD700;text-decoration:none;cursor:none;transition:color .3s ease}a:hover{color:#FF5733}
+    body { background-color: #2A3245; color: white; font-family: Arial, sans-serif; margin: 0; padding: 0; user-select: none; }
+    .content { padding: 5px 10px; }
+    .card-container { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    @media (min-width: 768px) { .card-container { grid-template-columns: 1fr 1fr; } }
+    .card { display: flex; background-color: #3A4256; padding: 10px; opacity: 0; border-radius: 8px; box-sizing: border-box; position: relative; transform: translateY(-10px); transition: all 0.5s ease-out; }
+    .card-content { flex: 1; }
+    .card-title { font-size: 16px; font-weight: bold; text-overflow: ellipsis; color: #FFFFFF; }
+    .card-description { font-size: 15px; color: #CED4DA; margin-bottom: 10px; }
+    .footer { width: 100%; padding: 10px 0; margin-bottom: 50px; font-size: 12px; background: #2A3245; position: relative; text-align: center; color: #5C6B8D; font-family: Arial, sans-serif; }
+    .hidden { opacity: 0; transform: translateY(10px); transition: all 0.5s ease-out; }
+    .show { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="card-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">• Informasi PlixNimeku</div>
+                <div class="card-description">PlixNimeku adalah platform streaming anime gratis yang dikembangkan oleh PLIXTEAMS present. Menawarkan tampilan UI yang sederhana, responsif, dan ramah pengguna.</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">• Komunitas Informasi</div>
+                <div class="card-description">Bergabunglah dengan komunitas PlixNimeku untuk mendapatkan informasi terbaru seputar anime, pembaruan platform, serta berdiskusi dengan sesama penggemar anime klik kotak di kanan atas untuk gabung.</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">• Kebijakan Privasi</div>
+                <div class="card-description">PlixNimeku berkomitmen untuk melindungi data pengguna. Kami tidak membagikan informasi pribadi kepada pihak ketiga tanpa izin dan menerapkan sistem keamanan untuk menjaga privasi Anda.</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">• Ketentuan Layanan</div>
+                <div class="card-description">Penggunaan PlixNimeku harus sesuai dengan ketentuan layanan yang telah ditetapkan. Dilarang keras menyalahgunakan atau merugikan pihak lain.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer hidden"><i class="fa fa-copyright"></i> PLIXTEAMS DESIGN</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".card, .card-content, .footer").forEach((e, i) => {
+            setTimeout(() => {
+                e.classList.add("show");
+            }, 100 * i);
+        });
+    });
+</script>
+</body>
+</html>
