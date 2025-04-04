@@ -2,112 +2,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" hhttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.cssref="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <style>itu 
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      background-color: #2A3245;
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      user-select: none;
-    }
-    .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1C2333;
-            color: white;
-            padding: 15px 10px;
-            margin-bottom: 10px;
-        }
-        .header .title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-        }
-        .menu-icon {
-            font-size: 30px;
-            margin-right: 5px;
-        }
-        .header .title span {
-            color: #FFD700;
-        }
-    main {
-      flex-grow: 1;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .bottom-navbar {
-      display: flex;
-      justify-content: space-around;
-      background-color: #1C2333;
-      padding: 10px 0;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 80px;
-      text-align: center;
-      transition: all 0.3s;
-      position: relative;
-    }
-    .nav-item i {
-      font-size: 20px;
-      padding: 10px;
-      color: #fff;
-      transition: all 0.3s;
-    }
-    .nav-item span {
-      font-size: 10px;
-      color: #bbb;
-      transition: all 0.3s ease-in-out;
-    }
-    .nav-item.active i,
-    .nav-item.active span {
-      color: #FFD700;
-    }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    html{scroll-behavior:smooth}body{background:#2A3245;color:#fff;font-family:Arial,sans-serif;margin:0;padding:0;display:flex;flex-direction:column;height:100vh;user-select:none}.header{display:flex;justify-content:space-between;align-items:center;background:#1C2333;color:#fff;padding:15px 10px;margin-bottom:10px}.header .title{font-size:20px;font-weight:bold;color:#fff}.menu-icon{font-size:30px;margin-right:5px}.header .title span{color:#FFD700}main{flex-grow:1}iframe{width:100%;height:100%;border:none}.bottom-navbar{display:flex;justify-content:space-around;background:#1C2333;padding:10px 0;position:fixed;bottom:0;width:100%;z-index:1000}.nav-item{display:flex;flex-direction:column;align-items:center;width:80px;text-align:center;transition:.3s;position:relative}.nav-item i{font-size:20px;padding:10px;color:#fff;transition:.3s}.nav-item span{font-size:10px;color:#bbb;transition:.3s}.nav-item.active i,.nav-item.active span{color:#FFD700}.dropdown-menu{display:none;position:absolute;right:35px;top:20px;background:#1C2333;border:1px solid #fff}.dropdown-menu a{display:block;color:#fff;text-decoration:none;padding:8px 10px;transition:.3s}.dropdown-menu a:hover{background:#FFD700;color:#000}
   </style>
 </head>
 <body>
   <div class="header">
-        <div class="icon"><i class="fa-solid fa-info-circle"></i></div>
-        <div class="title"><span>PLIXN</span>IMEKU!</div>
-        <div class="icon"><i class="fas fa-qrcode"></i></div>
-    </div>
-  <main>
-    <iframe id="content-frame" src="home.html"></iframe>
-  </main>
+    <div class="icon" id="news-icon"><i class="fa-solid fa-newspaper"></i></div>
+    <div class="title"><span>PLIXN</span>IMEKU!</div>
+    <div class="icon" id="qr-icon"><i class="fas fa-qrcode"></i></div>
+  </div>
+  <div class="dropdown-menu" id="qr-menu">
+    <a href="https://wa.me/your-number-here" target="_blank">Support Premium</a>
+    <a href="https://discord.gg/your-link-here" target="_blank">Gabung Komunitas</a>
+    <a href="https://wa.me/your-number-here" target="_blank">Saran & Feedback</a>
+  </div>
+  <main><iframe id="content-frame" src="home.html"></iframe></main>
   <footer>
     <div class="bottom-navbar">
-      <div class="nav-item" data-page="home.html">
-        <i class="fas fa-home"></i>
-        <span>Beranda</span>
-      </div>
-      <div class="nav-item" data-page="explore.html">
-        <i class="fas fa-compass"></i>
-        <span>Jelajahi</span>
-      </div>
-      <div class="nav-item" data-page="notifi.html">
-        <i class="fas fa-bell"></i>
-        <span>Notifikasi</span>
-      </div>
+      <div class="nav-item" data-page="home.html"><i class="fas fa-circle-h"></i><span>Beranda</span></div>
+      <div class="nav-item" data-page="explore.html"><i class="fas fa-compass"></i><span>Jelajahi</span></div>
+      <div class="nav-item" data-page="about.html"><i class="fas fa-info-circle"></i><span>Tentang</span></div>
     </div>
   </footer>
- <script>document.addEventListener("DOMContentLoaded",function(){const e=document.querySelectorAll(".nav-item"),t=document.getElementById("content-frame");function n(n){e.forEach(e=>e.classList.remove("active"));const a=[...e].find(e=>e.getAttribute("data-page")===n);a&&a.classList.add("active")}e.forEach(e=>{e.addEventListener("click",function(){const e=this.getAttribute("data-page");t.src=e,n(e),history.pushState({page:e},"",`#${e}`)})}),window.addEventListener("popstate",e=>{e.state&&e.state.page?(t.src=e.state.page,n(e.state.page)):(t.src="home.html",n("home.html"))});const a=location.hash.replace("#","")||"home.html";t.src=a,n(a)});</script>
+  <script>
+    document.addEventListener("DOMContentLoaded",function(){const e=document.querySelectorAll(".nav-item"),t=document.getElementById("content-frame"),n=document.getElementById("news-icon"),a=document.getElementById("qr-icon"),o=document.getElementById("qr-menu");function c(n){e.forEach(e=>e.classList.remove("active"));const a=[...e].find(e=>e.getAttribute("data-page")===n);a&&a.classList.add("active")}e.forEach(e=>{e.addEventListener("click",function(){const e=this.getAttribute("data-page");t.src=e,c(e),history.pushState({page:e},"",`#${e}`)})}),window.addEventListener("popstate",e=>{e.state&&e.state.page?(t.src=e.state.page,c(e.state.page)):(t.src="home.html",c("home.html"))});const i=location.hash.replace("#","")||"home.html";t.src=i,c(i),n.addEventListener("click",function(){t.src="update",c("update"),history.pushState({page:"update"},"","#update")}),a.addEventListener("click",function(e){e.stopPropagation(),o.style.display="block"===o.style.display?"none":"block"}),document.addEventListener("click",function(e){o.contains(e.target)||e.target===a||(o.style.display="none")})});
+  </script>
 </body>
 </html>
