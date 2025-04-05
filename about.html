@@ -1,1 +1,254 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script><style>html{scroll-behavior:smooth}a{color:#FFD700;text-decoration:none;cursor:none;transition:color .3s ease}a:hover{color:#FF5733}body{background-color:#2A3245;color:#fff;font-family:Arial,sans-serif;margin:0;padding:0;user-select:none}.content{padding:5px 10px}.card-container{display:grid;grid-template-columns:1fr;gap:10px}@media(min-width:768px){.card-container{grid-template-columns:1fr 1fr}}.card{display:flex;background-color:#3A4256;padding:10px;opacity:0;box-sizing:border-box;position:relative;transform:translateY(-10px);transition:all .5s ease-out}.card-content{flex:1}.card-title{margin-bottom: 5px;border-bottom: 1px #bbb solid; font-size:16px;font-weight:bold;text-overflow:ellipsis;color:#fff}.card-description{font-size:15px;color:#CED4DA}.footer{width:100%;padding:10px 0;margin-bottom:50px;font-size:12px;background:#2A3245;position:relative;text-align:center;color:#5C6B8D;font-family:Arial,sans-serif}.hidden{opacity:0;transform:translateY(10px);transition:all .5s ease-out}.show{opacity:1;transform:translateY(0)}</style></head><body><div class="content"><div class="card-container"><div class="card"><div class="card-content"><div class="card-title">• Informasi PlixNimeku</div><div class="card-description">PlixNimeku adalah platform streaming anime gratis yang dikembangkan oleh PLIXTEAMS present. Menawarkan tampilan UI yang sederhana, responsif, dan ramah pengguna.</div></div></div><div class="card"><div class="card-content"><div class="card-title">• Komunitas Informasi</div><div class="card-description">Bergabunglah dengan komunitas PlixNimeku untuk mendapatkan informasi terbaru seputar anime, pembaruan platform, serta berdiskusi dengan sesama penggemar anime klik kotak di kanan atas untuk gabung.</div></div></div><div class="card"><div class="card-content"><div class="card-title">• Kebijakan Privasi</div><div class="card-description">PlixNimeku berkomitmen untuk melindungi data pengguna. Kami tidak membagikan informasi pribadi kepada pihak ketiga tanpa izin dan menerapkan sistem keamanan untuk menjaga privasi Anda.</div></div></div><div class="card"><div class="card-content"><div class="card-title">• Ketentuan Layanan</div><div class="card-description">Penggunaan PlixNimeku harus sesuai dengan ketentuan layanan yang telah ditetapkan. Dilarang keras menyalahgunakan atau merugikan pihak lain.</div></div></div></div></div><footer class="footer hidden"><i class="fa fa-copyright"></i> PLIXTEAMS DESIGN</footer><script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".card, .card-content, .footer").forEach((e,i)=>{setTimeout(()=>{e.classList.add("show")},100*i)})});</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      background-color: #2A3245;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      overflow-x: hidden;
+    }
+
+    .content {
+      padding: 5px 10px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin: 20px 0 15px;
+    }
+
+    .circle-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ddd;
+      color: #2A3245;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    .section-header .line {
+      flex: 1;
+      height: 1px;
+      background-color: #ddd;
+      margin-left: 12px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media(min-width: 768px) {
+      .card-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background-color: #3A4256;
+      border-radius: 12px;
+      padding: 14px 18px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      opacity: 0;
+      color: #bbb;
+      transform: translateY(10px);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .card:hover {
+      background-color: #4A5070;
+    }
+
+    .footer {
+      width: 100%;
+      padding: 20px 0;
+      font-size: 13px;
+      text-align: center;
+      color: #5C6B8D;
+      background: #2A3245;
+      margin-top: 60px;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .overlay-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      z-index: 998;
+    }
+
+    .overlay-bg.active {
+      display: block;
+    }
+
+    .detail-overlay {
+      position: fixed;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background-color: #1E2533;
+      color: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+      z-index: 999;
+      transition: bottom 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    .detail-overlay.active {
+      bottom: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #ccc;
+      font-size: 20px;
+      margin: 0 auto 10px;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+    }
+
+    .detail-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      text-align: center;
+      color: #ccc;
+    }
+
+    .detail-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ccc;
+      overflow-y: auto;
+      flex: 1;
+      padding-right: 5px;
+      text-align: center;
+    }
+
+    .detail-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .detail-link a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="section-header">
+      <div class="circle-icon">i</div>
+      <div class="line"></div>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="showDetail('Informasi PlixNimeku', 'PlixNimeku adalah platform streaming anime gratis dengan antarmuka sederhana dan pengalaman pengguna yang lancar.', '#')">Informasi PlixNimeku</div>
+    </div>
+
+    <div class="section-header">
+      <div class="circle-icon">K</div>
+      <div class="line"></div>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="showDetail('Komunitas Anime', 'Gabung komunitas untuk berdiskusi dan berbagi info seputar anime terbaru.', 'https://t.me/plixnimeku')">Komunitas Anime</div>
+      <div class="card" onclick="showDetail('Berita & Update', 'Dapatkan informasi update platform dan rilisan anime terbaru langsung dari tim kami.', '#')">Berita & Update</div>
+    </div>
+
+    <div class="section-header">
+      <div class="circle-icon">$</div>
+      <div class="line"></div>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="showDetail('Dukung Kami', 'Bantu kami terus berkembang dengan berdonasi untuk biaya server & pengembangan.', 'https://saweria.co/plixteams')">Dukung Kami</div>
+    </div>
+
+    <div class="section-header">
+      <div class="circle-icon">T</div>
+      <div class="line"></div>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="showDetail('DMCA', 'Kami mematuhi aturan DMCA dan siap menghapus konten apabila ada pelanggaran yang valid.', '#')">DMCA</div>
+      <div class="card" onclick="showDetail('Kebijakan Privasi', 'Data pribadi Anda aman bersama kami. Tidak akan dibagikan tanpa izin.', '#')">Kebijakan Privasi</div>
+      <div class="card" onclick="showDetail('Syarat & Ketentuan', 'Penggunaan layanan tunduk pada syarat dan ketentuan yang berlaku.', '#')">Syarat & Ketentuan</div>
+    </div>
+  </div>
+
+  <!-- Background overlay -->
+  <div class="overlay-bg" id="overlayBg" onclick="closeDetail()"></div>
+
+  <!-- Bottom Sheet -->
+  <div class="detail-overlay" id="detailOverlay">
+    <button class="close-btn" onclick="closeDetail()">
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="detail-title" id="detailTitle">Judul</div>
+    <div class="detail-desc" id="detailDesc">Deskripsi</div>
+    <div class="detail-link" id="detailLink"></div>
+  </div>
+
+  <footer class="footer show">
+    <i class="fa fa-copyright"></i> PLIXTEAMS DESIGN
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".card").forEach((el, i) => {
+        setTimeout(() => el.classList.add("show"), i * 100);
+      });
+    });
+
+    function showDetail(title, desc, link) {
+      document.getElementById("detailTitle").textContent = title;
+      document.getElementById("detailDesc").textContent = desc;
+
+      if (link && link !== "#") {
+        document.getElementById("detailLink").innerHTML = `<a href="${link}" target="_blank">Kunjungi Halaman</a>`;
+      } else {
+        document.getElementById("detailLink").innerHTML = '';
+      }
+
+      document.getElementById("detailOverlay").classList.add("active");
+      document.getElementById("overlayBg").classList.add("active");
+    }
+
+    function closeDetail() {
+      document.getElementById("detailOverlay").classList.remove("active");
+      document.getElementById("overlayBg").classList.remove("active");
+    }
+  </script>
+</body>
+</html>
