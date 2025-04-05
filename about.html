@@ -110,10 +110,11 @@
       bottom: -100%;
       left: 0;
       width: 100%;
-      height: 30%;
-      background-color: #1E2533;
+      height: 35%;
+      background-color: #1C2333;
       color: #fff;
       padding: 10px;
+      padding-bottom: 80px;
       box-sizing: border-box;
       z-index: 999;
       transition: bottom 0.4s ease;
@@ -149,7 +150,6 @@
 
     .detail-desc {
       font-size: 14px;
-      line-height: 1.6;
       color: #ccc;
       overflow-y: auto;
       flex: 1;
@@ -159,13 +159,12 @@
 
     .detail-link {
       text-align: center;
-      margin-top: 10px;
     }
 
     .detail-link a {
       color: #FFD700;
       text-decoration: none;
-      font-weight: bold;
+      cursor: none;
     }
   </style>
 </head>
@@ -236,7 +235,7 @@
       document.getElementById("detailDesc").textContent = desc;
 
       if (link && link !== "#") {
-        document.getElementById("detailLink").innerHTML = `<a href="${link}" target="_blank">Kunjungi Halaman</a>`;
+        document.getElementById("detailLink").innerHTML = `<a href="${link}" target="_blank">KUNJUNGI</a>`;
       } else {
         document.getElementById("detailLink").innerHTML = '';
       }
