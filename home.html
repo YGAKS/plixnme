@@ -9,15 +9,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     <style>
         html {
-            scroll-behavior: smooth;
+          scroll-behavior: smooth;
+          background-color: #2A3245;
         }
         body {
-            background-color: #2A3245;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            user-select: none;
+          background-color: #2A3245;
+          color: white;
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          user-select: none;
         }
         .section-title {
             display: flex;
@@ -240,7 +241,7 @@
         <div class="cover-title">Coming Soon</div>
     </div>
 </div><div class="line"></div>
-<script>window.onload=function(){const e=sessionStorage.getItem("scrollY");null!==e&&window.scrollTo(0,parseInt(e));setInterval(()=>{sessionStorage.setItem("scrollY",window.scrollY);location.reload()},1500)};</script>
+<script>window.onload=function(){const e=sessionStorage.getItem("scrollY");null!==e&&window.scrollTo(0,parseInt(e));setInterval(()=>{sessionStorage.setItem("scrollY",window.scrollY),document.body.style.visibility="hidden",location.href=location.href},5000)};</script>
 
 </body>
 </html>
