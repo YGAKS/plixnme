@@ -24,7 +24,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 10px 10px 0;
-            color: #fff;
+            color: #ddd;
         }
         .line {
             flex: 1;
@@ -50,7 +50,7 @@
         }
         .title-icons {
             margin-left: 10px;
-            color: #fff;
+            color: #ddd;
         }
         .cover-list {
             display: flex;
@@ -175,7 +175,7 @@
 <!-- Repeat same block for 'Populer Saat Ini' and 'Pilihan Untukmu' -->
 <div class="section-title">
     <div class="section-title-left">
-        <div class="title-text">Populer Saat Ini</div>
+        <div class="title-text">Populer musim ini</div>
         <div class="title-line"></div>
     </div>
     <div class="title-icons"><i class="fas fa-fire"></i></div>
@@ -209,7 +209,7 @@
 
 <div class="section-title">
     <div class="section-title-left">
-        <div class="title-text">Pilihan Untukmu</div>
+        <div class="title-text">Selesai musim ini</div>
         <div class="title-line"></div>
     </div>
     <div class="title-icons"><i class="fas fa-trophy"></i></div>
@@ -240,6 +240,7 @@
         <div class="cover-title">Coming Soon</div>
     </div>
 </div><div class="line"></div>
+<script>window.onload=function(){const e=sessionStorage.getItem("scrollY");null!==e&&window.scrollTo(0,parseInt(e));setInterval(()=>{sessionStorage.setItem("scrollY",window.scrollY);location.reload()},1500)};</script>
 
 </body>
 </html>
