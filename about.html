@@ -22,14 +22,32 @@
     }
 
     /* Tema hero mendekati putih tapi sedikit gelap */
-    .hero {
-      background-color: #d4d4d4;
-      border-left: 4px solid #bbb;
-      color: #333;
-      padding: 20px 15px;
-      text-align: left;
-      margin-top: 20px;
-    }
+.hero {
+  position: relative;
+  background-color: #d4d4d4;
+  color: #333;
+  padding: 20px 15px;
+  text-align: left;
+  margin-top: 40px;
+}
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  width: 5px;
+  height: 40px;
+  background-color: #d4d4d4;
+}
+
+.hero::before {
+  left: 30px;
+}
+
+.hero::after {
+  right: 30px;
+}
 
     .hero-title {
       color: #333;
@@ -71,7 +89,7 @@
 
     .card {
       background-color: #3A4256;
-      padding: 14px 18px;
+      padding: 10px;
       box-sizing: border-box;
       transition: .3s ease;
       opacity: 0;
@@ -173,10 +191,10 @@
     </div>
     <div class="card-container">
       <div class="card" onclick="showDetail('INFORMASI DASAR','PlixNimeku adalah proyek individu yang bertujuan menyediakan pengalaman streaming anime gratis, ringan, dan bebas iklan yang mengganggu. Dibuat dengan fokus pada kesederhanaan dan kenyamanan pengguna, PlixNimeku hadir sebagai alternatif bagi penggemar anime yang ingin menonton dengan mudah tanpa harus melewati banyak iklan atau pop-up. Semua ini dibangun secara mandiri oleh satu developer, dengan semangat berbagi hiburan untuk semua.','#')">
-        Informasi dasar : about of plixnimeku website
+        Informasi dasar : about of plixnimeku web & apk.
       </div>
       <div class="card" onclick="showDetail('KOMUNITAS INFO','Bergabunglah dengan komunitas PlixNimeku untuk berbagi info, rekomendasi, dan berdiskusi tentang anime terbaru bersama sesama wibu dan otaku. Komunitas ini dibentuk sebagai tempat nongkrong virtual bagi pengguna, tempat saling support dan update seputar perkembangan anime. Kamu bisa langsung gabung lewat grup Telegram dan jadi bagian dari perjalanan indie ini.','#')">
-        Komunitas info : about comunity plixnimeku
+        Komunitas info : about of comunity plixnimeku.
       </div>
     </div>
 
@@ -185,10 +203,10 @@
     </div>
     <div class="card-container">
       <div class="card" onclick="showDetail('DUKUNG KAMI','Proyek ini sepenuhnya dibangun dan dikelola oleh individu. Untuk menjaga server tetap hidup dan memperluas fitur ke depannya, dukungan dari kamu sangat berarti. Donasi sekecil apapun akan sangat membantu operasional dan pengembangan PlixNimeku agar tetap online dan terus berkembang. Yuk bantu jaga platform ini tetap hidup!.','#')">
-        Dukung Kami : dukung dengan saran atau modal
+        Dukung Kami : dukung dengan saran atau modal.
       </div>
       <div class="card" onclick="showDetail('SPONSOR SHIP','Tertarik untuk mempromosikan brand, komunitas, atau produk kamu lewat PlixNimeku? Kami membuka peluang kerja sama sponsor secara fleksibel. Dengan trafik pengguna aktif dari komunitas anime, sponsor kamu bisa mendapatkan eksposur yang tepat sasaran. Hubungi kami untuk info lebih lanjut—karena proyek indie juga bisa jadi tempat promosi yang keren!.','#')">
-        Sponsor Ship : sponsor your bussines to advent
+        Sponsor Ship : sponsor your bussines to advent.
       </div>
     </div>
 
@@ -197,10 +215,10 @@
     </div>
     <div class="card-container">
       <div class="card" onclick="showDetail('Digital Millennium Copyright Act','Kami menghormati hak kekayaan intelektual dan tunduk pada ketentuan DMCA (Digital Millennium Copyright Act). Jika Anda adalah pemilik hak cipta dan menemukan konten yang melanggar di situs/aplikasi ini, Anda bisa menghubungi kami untuk permintaan penghapusan. PlixNimeku dibangun untuk berbagi, bukan mencuri. Semua laporan akan kami tanggapi secara profesional dan secepat mungkin.','#')">
-        UU Hak Cipta MD : dmca for hak cipta and legali
+        UU Hak Cipta MD : dmca for hak cipta and legali.
       </div>
       <div class="card" onclick="showDetail('KEBIJAKAN PRIVASI','Data kamu adalah prioritas kami. Sebagai platform mandiri, kami tidak mengumpulkan data pribadi pengguna secara berlebihan dan tidak pernah menjual informasi apa pun kepada pihak ketiga. PlixNimeku percaya pada pengalaman nonton yang aman, nyaman, dan bebas pelacakan. Gunakan aplikasi/situs ini dengan tenang, privasi kamu tetap terjaga.','#')">
-        Kebijakan Privasi : kebijakan member untuk izin
+        Kebijakan Privasi : kebijakan member untuk izin.
       </div>
     </div>
   </div>
