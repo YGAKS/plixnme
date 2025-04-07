@@ -1,1 +1,241 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/><style>body{background-color:#2A3245;color:#fff;font-family:'Segoe UI',sans-serif;margin:0;padding:0;user-select:none;overflow-x:hidden}.content{padding:0 5px;max-width:900px;margin:auto}.section-header{display:flex;align-items:center;margin:20px 0 15px}.section-header .line{flex:1;height:1px;background-color:#3A4256}.card-container{display:grid;grid-template-columns:1fr;gap:10px}@media(min-width:768px){.card-container{grid-template-columns:1fr 1fr}}.card{background-color:#3A4256;padding:14px 18px;box-sizing:border-box;transition:.3s ease;opacity:0;color:#bbb;transform:translateY(10px);font-size:14px;font-weight:500}.card:hover{background-color:#4E566A}.show{opacity:1;transform:translateY(0)}.overlay-bg{position:fixed;top:0;left:0;width:100%;height:100%;display:none;z-index:998}.overlay-bg.active{display:block}.detail-overlay{position:fixed;bottom:-100%;left:0;width:100%;height:50%;border-top: 5px #2A3245 solid;background-color:#1C2333;color:#fff;padding:10px 10px 80px;box-sizing:border-box;z-index:999;transition:bottom .5s ease;display:flex;flex-direction:column}.detail-overlay.active{bottom:0}.close-btn{background:none;border:none;color:#ccc;font-size:20px;margin:0 auto 10px}.close-btn:hover{color:#fff}.detail-title{font-size:18px;font-weight:bold;margin-bottom:6px;text-align:center;color:#fff}.detail-desc{font-size:14px;color:#ccc;flex:1;padding-right:5px;text-align:justify;margin-bottom:25px;}.detail-link{text-align:center}.hero{color:#fff;text-align:center;padding:20px 10px}.hero-title{color: #ddd;font-size:20px;margin:0 0 10px}.hero-desc{color:#bbb;font-size:14px;margin:0;max-width:600px;margin:auto}</style></head><body><div class="content"><div class="hero"><h1 class="hero-title">TENTANG</h1><p class="hero-desc">streaming anime gratis, dibuat dengan fokus pada kenyamanan pengguna klik button di bawah berikut untuk melihat tentang sesuatu.</p></div><div class="section-header"><div class="line"></div></div><div class="card-container"><div class="card" onclick="showDetail('INFORMASI DASAR','PlixNimeku adalah proyek individu yang bertujuan menyediakan pengalaman streaming anime gratis, ringan, dan bebas iklan yang mengganggu. Dibuat dengan fokus pada kesederhanaan dan kenyamanan pengguna, PlixNimeku hadir sebagai alternatif bagi penggemar anime yang ingin menonton dengan mudah tanpa harus melewati banyak iklan atau pop-up. Semua ini dibangun secara mandiri oleh satu developer, dengan semangat berbagi hiburan untuk semua.','#')">Informasi dasar : about of plixnimeku website</div><div class="card" onclick="showDetail('KOMUNITAS INFO','Bergabunglah dengan komunitas PlixNimeku untuk berbagi info, rekomendasi, dan berdiskusi tentang anime terbaru bersama sesama wibu dan otaku. Komunitas ini dibentuk sebagai tempat nongkrong virtual bagi pengguna, tempat saling support dan update seputar perkembangan anime. Kamu bisa langsung gabung lewat grup Telegram dan jadi bagian dari perjalanan indie ini.','#')">Komunitas info : about comunity plixnimeku</div></div><div class="section-header"><div class="line"></div></div><div class="card-container"><div class="card" onclick="showDetail('DUKUNG KAMI','Proyek ini sepenuhnya dibangun dan dikelola oleh individu. Untuk menjaga server tetap hidup dan memperluas fitur ke depannya, dukungan dari kamu sangat berarti. Donasi sekecil apapun akan sangat membantu operasional dan pengembangan PlixNimeku agar tetap online dan terus berkembang. Yuk bantu jaga platform ini tetap hidup!.','#')">Dukung Kami : dukung dengan saran atau modal</div><div class="card" onclick="showDetail('SPONSOR SHIP','Tertarik untuk mempromosikan brand, komunitas, atau produk kamu lewat PlixNimeku? Kami membuka peluang kerja sama sponsor secara fleksibel. Dengan trafik pengguna aktif dari komunitas anime, sponsor kamu bisa mendapatkan eksposur yang tepat sasaran. Hubungi kami untuk info lebih lanjut—karena proyek indie juga bisa jadi tempat promosi yang keren!.','#')">Sponsor Ship : sponsor your bussines to advent</div></div><div class="section-header"><div class="line"></div></div><div class="card-container"><div class="card" onclick="showDetail('Digital Millennium Copyright Act','Kami menghormati hak kekayaan intelektual dan tunduk pada ketentuan DMCA (Digital Millennium Copyright Act). Jika Anda adalah pemilik hak cipta dan menemukan konten yang melanggar di situs/aplikasi ini, Anda bisa menghubungi kami untuk permintaan penghapusan. PlixNimeku dibangun untuk berbagi, bukan mencuri. Semua laporan akan kami tanggapi secara profesional dan secepat mungkin.','#')">UU Hak Cipta MD : dmca for hak cipta and legali</div><div class="card" onclick="showDetail('KEBIJAKAN PRIVASI','Data kamu adalah prioritas kami. Sebagai platform mandiri, kami tidak mengumpulkan data pribadi pengguna secara berlebihan dan tidak pernah menjual informasi apa pun kepada pihak ketiga. PlixNimeku percaya pada pengalaman nonton yang aman, nyaman, dan bebas pelacakan. Gunakan aplikasi/situs ini dengan tenang, privasi kamu tetap terjaga.','#')">Kebijakan Privasi : kebijakan member untuk izin</div></div></div><div class="overlay-bg" id="overlayBg" onclick="closeDetail()"></div><div class="detail-overlay" id="detailOverlay"><button class="close-btn" onclick="closeDetail()"><i class="fas fa-chevron-down"></i></button><div class="detail-title" id="detailTitle">Judul</div><div class="detail-desc" id="detailDesc">Deskripsi</div><div class="detail-link" id="detailLink"></div></div><script>document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".card").forEach((el,i)=>{setTimeout(()=>el.classList.add("show"),i*100)})});function showDetail(t,d,l){document.getElementById("detailTitle").textContent=t;document.getElementById("detailDesc").textContent=d;if(l&&l!=="#"){document.getElementById("detailLink").innerHTML=``}else{document.getElementById("detailLink").innerHTML=''}document.getElementById("detailOverlay").classList.add("active");document.getElementById("overlayBg").classList.add("active")}function closeDetail(){document.getElementById("detailOverlay").classList.remove("active");document.getElementById("overlayBg").classList.remove("active")}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      background-color: #2A3245;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      overflow-x: hidden;
+    }
+
+    .content {
+      padding: 0 5px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* Tema hero mendekati putih tapi sedikit gelap */
+    .hero {
+      background-color: #d4d4d4;
+      border-left: 4px solid #bbb;
+      color: #333;
+      padding: 20px 15px;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .hero-title {
+      color: #333;
+      border-bottom: 1px #bbb solid;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0 0 5px;
+    }
+
+    .hero-desc {
+      color: #555;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .section-header .line {
+      flex: 1;
+      height: 1px;
+      background-color: #3A4256;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 5px;
+    }
+
+    @media(min-width:768px) {
+      .card-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background-color: #3A4256;
+      padding: 14px 18px;
+      box-sizing: border-box;
+      transition: .3s ease;
+      opacity: 0;
+      color: #bbb;
+      transform: translateY(10px);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .card:hover {
+      background-color: #4E566A;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .overlay-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      z-index: 998;
+    }
+
+    .overlay-bg.active {
+      display: block;
+    }
+
+    .detail-overlay {
+      position: fixed;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      height: 35%;
+      border-top: 5px #2A3245 solid;
+      background-color: #1C2333;
+      color: #fff;
+      padding: 10px 10px 80px;
+      box-sizing: border-box;
+      z-index: 999;
+      transition: bottom .5s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-overlay.active {
+      bottom: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #ccc;
+      font-size: 20px;
+      margin: 0 auto 10px;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+    }
+
+    .detail-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .detail-desc {
+      font-size: 14px;
+      color: #ccc;
+      flex: 1;
+      overlow-y: auto;
+      max-height: 250px;
+      padding-right: 5px;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    .detail-link {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="hero">
+      <h1 class="hero-title">TENTANG</h1>
+      <p class="hero-desc">Streaming anime gratis, dibuat dengan fokus pada kenyamanan pengguna. Klik tombol di bawah untuk melihat tentang sesuatu.</p>
+    </div>
+
+    <div class="section-header">
+      <div class="line"></div>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="showDetail('INFORMASI DASAR','PlixNimeku adalah proyek individu yang bertujuan menyediakan pengalaman streaming anime gratis, ringan, dan bebas iklan yang mengganggu. Dibuat dengan fokus pada kesederhanaan dan kenyamanan pengguna, PlixNimeku hadir sebagai alternatif bagi penggemar anime yang ingin menonton dengan mudah tanpa harus melewati banyak iklan atau pop-up. Semua ini dibangun secara mandiri oleh satu developer, dengan semangat berbagi hiburan untuk semua.','#')">
+        Informasi dasar : about of plixnimeku website
+      </div>
+      <div class="card" onclick="showDetail('KOMUNITAS INFO','Bergabunglah dengan komunitas PlixNimeku untuk berbagi info, rekomendasi, dan berdiskusi tentang anime terbaru bersama sesama wibu dan otaku. Komunitas ini dibentuk sebagai tempat nongkrong virtual bagi pengguna, tempat saling support dan update seputar perkembangan anime. Kamu bisa langsung gabung lewat grup Telegram dan jadi bagian dari perjalanan indie ini.','#')">
+        Komunitas info : about comunity plixnimeku
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="line"></div>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="showDetail('DUKUNG KAMI','Proyek ini sepenuhnya dibangun dan dikelola oleh individu. Untuk menjaga server tetap hidup dan memperluas fitur ke depannya, dukungan dari kamu sangat berarti. Donasi sekecil apapun akan sangat membantu operasional dan pengembangan PlixNimeku agar tetap online dan terus berkembang. Yuk bantu jaga platform ini tetap hidup!.','#')">
+        Dukung Kami : dukung dengan saran atau modal
+      </div>
+      <div class="card" onclick="showDetail('SPONSOR SHIP','Tertarik untuk mempromosikan brand, komunitas, atau produk kamu lewat PlixNimeku? Kami membuka peluang kerja sama sponsor secara fleksibel. Dengan trafik pengguna aktif dari komunitas anime, sponsor kamu bisa mendapatkan eksposur yang tepat sasaran. Hubungi kami untuk info lebih lanjut—karena proyek indie juga bisa jadi tempat promosi yang keren!.','#')">
+        Sponsor Ship : sponsor your bussines to advent
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="line"></div>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="showDetail('Digital Millennium Copyright Act','Kami menghormati hak kekayaan intelektual dan tunduk pada ketentuan DMCA (Digital Millennium Copyright Act). Jika Anda adalah pemilik hak cipta dan menemukan konten yang melanggar di situs/aplikasi ini, Anda bisa menghubungi kami untuk permintaan penghapusan. PlixNimeku dibangun untuk berbagi, bukan mencuri. Semua laporan akan kami tanggapi secara profesional dan secepat mungkin.','#')">
+        UU Hak Cipta MD : dmca for hak cipta and legali
+      </div>
+      <div class="card" onclick="showDetail('KEBIJAKAN PRIVASI','Data kamu adalah prioritas kami. Sebagai platform mandiri, kami tidak mengumpulkan data pribadi pengguna secara berlebihan dan tidak pernah menjual informasi apa pun kepada pihak ketiga. PlixNimeku percaya pada pengalaman nonton yang aman, nyaman, dan bebas pelacakan. Gunakan aplikasi/situs ini dengan tenang, privasi kamu tetap terjaga.','#')">
+        Kebijakan Privasi : kebijakan member untuk izin
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay-bg" id="overlayBg" onclick="closeDetail()"></div>
+  <div class="detail-overlay" id="detailOverlay">
+    <button class="close-btn" onclick="closeDetail()"><i class="fas fa-chevron-down"></i></button>
+    <div class="detail-title" id="detailTitle">Judul</div>
+    <div class="detail-desc" id="detailDesc">Deskripsi</div>
+    <div class="detail-link" id="detailLink"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".card").forEach((el, i) => {
+        setTimeout(() => el.classList.add("show"), i * 100);
+      });
+    });
+
+    function showDetail(t, d, l) {
+      document.getElementById("detailTitle").textContent = t;
+      document.getElementById("detailDesc").textContent = d;
+      if (l && l !== "#") {
+        document.getElementById("detailLink").innerHTML = ``;
+      } else {
+        document.getElementById("detailLink").innerHTML = '';
+      }
+      document.getElementById("detailOverlay").classList.add("active");
+      document.getElementById("overlayBg").classList.add("active");
+    }
+
+    function closeDetail() {
+      document.getElementById("detailOverlay").classList.remove("active");
+      document.getElementById("overlayBg").classList.remove("active");
+    }
+  </script>
+</body>
+</html>
