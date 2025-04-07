@@ -1,245 +1,342 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
-    <style>
-        html {
-          scroll-behavior: smooth;
-          background-color: #2A3245;
-        }
-        body {
-          background-color: #2A3245;
-          color: white;
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          user-select: none;
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 10px 0;
-            color: #ddd;
-        }
-        .line {
-            flex: 1;
-            margin: 10px;
-            height: 1px;
-            background-color: #3A4256;
-        }
-        .section-title-left {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-        }
-        .title-text {
-            margin-right: 10px;
-            font-size: 1.2em;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-        .title-line {
-            flex-grow: 1;
-            height: 1px;
-            background-color: #3A4256;
-        }
-        .title-icons {
-            margin-left: 10px;
-            color: #ddd;
-        }
-        .cover-list {
-            display: flex;
-            gap: 8px;
-            padding: 10px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scroll-behavior: smooth;
-        }
-        .cover-list.horizontal-scroll .cover-item {
-            flex: 0 0 auto;
-        }
-        .cover-item {
-            width: 100px;
-            height: 165px;
-            position: relative;
-        }
-        .cover-item img {
-            width: 100%;
-            height: 140px;
-            border-radius: 4px;
-            visibility: hidden;
-        }
-        .cover-title {
-            margin-top: 5px;
-            font-size: 0.85em;
-            white-space: nowrap;
-            overflow: hidden;
-            color: #bbb;
-            text-overflow: ellipsis;
-            visibility: hidden;
-        }
-        .skeleton {
-            position: relative;
-            overflow: hidden;
-            background-color: #3a4256;
-        }
-        .skeleton::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shimmer 1.5s infinite;
-        }
-        @keyframes shimmer {
-            100% {
-                left: 100%;
-            }
-        }
-        .img-skeleton {
-            width: 100%;
-            height: 140px;
-            border-radius: 4px;
-            margin-bottom: 5px;
-        }
-        .text-skeleton {
-            height: 20px;
-            width: 100%;
-            border-radius: 3px;
-        }
-        .img-skeleton,
-        .text-skeleton {
-            display: block;
-        }
-        .cover-item.loaded img,
-        .cover-item.loaded .cover-title {
-            visibility: visible;
-        }
-        .cover-item.loaded .img-skeleton,
-        .cover-item.loaded .text-skeleton {
-            display: none;
-        }
-        .cover-list::-webkit-scrollbar {
-            display: none;
-        }
-        .cover-list {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #2A3245;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 5px;
+      user-select: none;
+    }
+    .slider-container {
+      overflow: hidden;
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .hero-card {
+      display: flex;
+      background-color: #3A4256;
+      overflow: hidden;
+      flex-shrink: 0;
+      width: 100%;
+    }
+
+    .hero-info {
+      padding: 15px;
+      flex: 1;
+    }
+
+    .hero-title {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .hero-desc {
+      font-size: 12px;
+      color: #bbb;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+    .hero-img {
+      width: 100px;
+      height: 140px;
+      object-fit: cover;
+      background: linear-gradient(
+        90deg,
+        #252b38 0%,
+        #313745 50%,
+        #252b38 100%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .arrow-btn {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 18px;
+      padding: 10px 14px;
+      border-radius: 5px;
+      outline: none;
+    }
+    
+    .arrow-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      background-color: #555;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      width: 25px;
+      background-color: white;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0 5px 0;
+      color: #ddd;
+    }
+    .line {
+      flex: 1;
+      margin: 10px 0;
+      height: 1px;
+      background-color: #3A4256;
+    }
+    .section-title-left {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+    }
+    .title-text {
+      margin-right: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .title-line {
+      flex-grow: 1;
+      height: 1px;
+      background-color: #3A4256;
+    }
+    .title-icons {
+      margin-left: 10px;
+      color: #ddd;
+    }
+    .cover-list {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+    }
+    .cover-list.horizontal-scroll .cover-item {
+      flex: 0 0 auto;
+    }
+    .cover-item {
+      width: 100px;
+      height: 165px;
+      position: relative;
+    }
+    .cover-item img {
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(
+        90deg,
+        #252b38 0%,
+        #313745 50%,
+        #252b38 100%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+    .cover-title {
+      margin-top: 5px;
+      font-size: 0.85em;
+      white-space: nowrap;
+      overflow: hidden;
+      color: #bbb;
+      text-overflow: ellipsis;
+    }
+    .cover-list::-webkit-scrollbar {
+      display: none;
+    }
+    .cover-list {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
 <body>
+  <div class="slider-container">
+    <div class="slider-track" id="slider">
+      <div class="hero-card">
+        <div class="hero-info">
+          <div class="hero-title">The Heavenly Demon Can’t Live a Normal Life</div>
+          <div class="hero-desc">Action, Fantasy — Chapter 151 — Ongoing</div>
+        </div>
+        <img src="cover.png" class="hero-img" />
+      </div>
+      <div class="hero-card">
+        <div class="hero-info">
+          <div class="hero-title">Solo Leveling</div>
+          <div class="hero-desc">Action, Dungeon — Chapter 189 — Complete</div>
+        </div>
+        <img src="cover.png" class="hero-img" />
+      </div>
+      <div class="hero-card">
+        <div class="hero-info">
+          <div class="hero-title">Return of the Mount Hua Sect</div>
+          <div class="hero-desc">Martial Arts — Chapter 103 — Ongoing</div>
+        </div>
+        <img src="cover.png" class="hero-img" />
+      </div>
+    </div>
 
-<!-- SECTION TEMPLATE -->
-<div class="section-title">
-    <div class="section-title-left">
-        <div class="title-text">Episode Terbaru</div>
-        <div class="title-line"></div>
+    <div class="slider-controls">
+      <button class="arrow-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+      <div class="dots" id="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <button class="arrow-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <div class="title-icons"><i class="fas fa-circle-plus"></i></div>
-</div>
-<div class="cover-list horizontal-scroll">
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-</div><div class="line"></div>
-
-<!-- Repeat same block for 'Populer Saat Ini' and 'Pilihan Untukmu' -->
-<div class="section-title">
-    <div class="section-title-left">
-        <div class="title-text">Populer musim ini</div>
-        <div class="title-line"></div>
-    </div>
-    <div class="title-icons"><i class="fas fa-fire"></i></div>
-</div>
-<div class="cover-list horizontal-scroll">
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-</div><div class="line"></div>
+  </div>
 
 <div class="section-title">
-    <div class="section-title-left">
-        <div class="title-text">Selesai musim ini</div>
-        <div class="title-line"></div>
-    </div>
-    <div class="title-icons"><i class="fas fa-calendar-check"></i></div>
+  <div class="section-title-left">
+    <div class="title-text">EPISODE TERBARU</div>
+    <div class="title-line"></div>
+  </div>
+  <div class="title-icons"><i class="fas fa-circle-plus"></i></div>
 </div>
 <div class="cover-list horizontal-scroll">
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
-    <div class="cover-item">
-        <div class="img-skeleton skeleton"></div>
-        <div class="text-skeleton skeleton"></div>
-        <img src="coming.png" onload="this.parentElement.classList.add('loaded')">
-        <div class="cover-title">Coming Soon</div>
-    </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+</div>
+
+<div class="section-title">
+  <div class="section-title-left">
+    <div class="title-text">POPULER MUSIM INI</div>
+    <div class="title-line"></div>
+  </div>
+  <div class="title-icons"><i class="fas fa-fire"></i></div>
+</div>
+<div class="cover-list horizontal-scroll">
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+</div>
+
+<div class="section-title">
+  <div class="section-title-left">
+    <div class="title-text">SELESAI MUSIM INI</div>
+    <div class="title-line"></div>
+  </div>
+  <div class="title-icons"><i class="fas fa-calendar-check"></i></div>
+</div>
+<div class="cover-list horizontal-scroll">
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
+  <div class="cover-item">
+    <img src="coming.png">
+    <div class="cover-title">Coming Soon</div>
+  </div>
 </div><div class="line"></div>
+
+ <script>
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const slider = document.getElementById("slider");
+    const dots = document.getElementById("dots").children;
+
+    function updateSlide() {
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+      dots[currentSlide].classList.add("active");
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlide();
+    }
+
+    setInterval(nextSlide, 10000);
+  </script>
 </body>
 </html>
